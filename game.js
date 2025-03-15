@@ -328,3 +328,16 @@ document.getElementById('audio-toggle').addEventListener('change', (e) => {
     }
     console.log('Audio enabled:', audioEnabled);
 });
+
+fetch('rarepepes.json')
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to load rarepepes.json');
+        return response.json();
+    })
+    .then(data => {
+        rarePepes = data;
+        startGame();
+    })
+    .catch(error => {
+        console.error('Error loading rarepepes.json:', error);
+    });
