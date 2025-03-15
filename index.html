@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rare Pepe FaceOff</title>
+    <link rel="stylesheet" href="styles.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <!-- Firebase SDKs (versions compatibles) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div id="pepecash-container"></div>
+        <h2 id="loading-text">Pepe FaceOff Incoming...</h2>
+        <input type="text" id="username-input" placeholder="Enter your name" maxlength="20">
+        <button id="start-button" onclick="startGame()">Play</button>
+    </div>
+
+    <div id="game-screen" class="hidden">
+        <div class="content-wrapper">
+            <h1>Rare Pepe FaceOff</h1>
+            <p id="subtitle">Which Pepe is the best?</p>
+            <div class="arena">
+                <div id="pepe-left" class="pepe-card-container" onclick="voteForPepe('left')">
+                    <div id="vote-left" class="voteDisplay"></div>
+                    <div class="pepe-card">
+                        <img class="card-image" src="" alt="">
+                    </div>
+                    <div class="pepe-info">
+                        <div class="name"></div>
+                    </div>
+                    <div class="rarity"></div>
+                </div>
+                <div id="vs">VS</div>
+                <div id="pepe-right" class="pepe-card-container" onclick="voteForPepe('right')">
+                    <div id="vote-right" class="voteDisplay"></div>
+                    <div class="pepe-card">
+                        <img class="card-image" src="" alt="">
+                    </div>
+                    <div class="pepe-info">
+                        <div class="name"></div>
+                    </div>
+                    <div class="rarity"></div>
+                </div>
+            </div>
+            <button id="top-10-button" onclick="toggleTop10()">Top 10 Rarepepes</button>
+            <div id="top-10" class="hidden">
+                <h2>Top 10 Rarepepes</h2>
+                <ul id="top-list"></ul>
+                <button onclick="toggleTop10()">Close</button>
+            </div>
+            <div id="player-score">
+                <span id="player-name"></span><br>
+                Votes: <span id="vote-count">0</span>
+            </div>
+        </div>
+        <div id="audio-controls">
+            <label><input type="checkbox" id="audio-toggle" checked> Audio ON</label>
+        </div>
+    </div>
+
+    <audio id="vote-sound-1" preload="auto" src="impact1.mp3"></audio>
+    <audio id="vote-sound-2" preload="auto" src="impact2.wav"></audio>
+    <audio id="vote-sound-3" preload="auto" src="impact3.wav"></audio>
+    <audio id="vote-sound-4" preload="auto" src="impact4.wav"></audio>
+    <audio id="vote-sound-5" preload="auto" src="impact5.wav"></audio>
+    <audio id="vote-sound-6" preload="auto" src="impact6.mp3"></audio>
+    <audio id="bg-music" preload="auto" src="https://www.myinstants.com/media/sounds/arcade-retro.mp3" loop></audio>
+    <audio id="fight-sound" preload="auto" src="https://www.myinstants.com/media/sounds/round-one-fight.mp3"></audio>
+    <audio id="start-sound" preload="auto" src="prepare-to-fight.mp3"></audio>
+
+    <script src="game.js?v=1"></script>
+</body>
+</html>
